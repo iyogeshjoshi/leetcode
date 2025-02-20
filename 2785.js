@@ -7,7 +7,7 @@ Return the resulting string.
 
 The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in lowercase or uppercase. Consonants comprise all letters that are not vowels.
 
- 
+
 
 Example 1:
 
@@ -27,7 +27,7 @@ Explanation: There are no vowels in s (all characters in s are consonants), so w
  */
 var sortVowels = function (s) {
   const vowels = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"].map(
-    (char) => char.charCodeAt()
+    (char) => char.charCodeAt(),
   );
   let strArr = s.split("");
   const isVowel = (char) => vowels.includes(char.charCodeAt());
