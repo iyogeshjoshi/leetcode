@@ -22,7 +22,7 @@
  * Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
  * Output: false
  */
-const assert = require('node:assert').strict;
+const assert = require("node:assert").strict;
 
 /**
  * @param {character[][]} BOARD
@@ -47,13 +47,19 @@ const exist = function (board, word) {
     if (index === word.length) return true;
 
     // If the current cell is out of bounds or doesn't match the current character, return false
-    if (r < 0 || r >= rows || c < 0 || c >= cols || board[r][c] !== word[index]) {
+    if (
+      r < 0 ||
+      r >= rows ||
+      c < 0 ||
+      c >= cols ||
+      board[r][c] !== word[index]
+    ) {
       return false;
     }
 
     // Mark the cell as visited by changing its value
     const temp = board[r][c];
-    board[r][c] = '#';
+    board[r][c] = "#";
 
     for (const [dr, dc] of directions) {
       if (backtrack(r + dr, c + dc, index + 1)) {
@@ -82,34 +88,44 @@ const exist = function (board, word) {
 assert.strictEqual(
   exist(
     [
-      ['A', 'B', 'C', 'E'],
-      ['S', 'F', 'C', 'S'],
-      ['A', 'D', 'E', 'E'],
+      ["A", "B", "C", "E"],
+      ["S", "F", "C", "S"],
+      ["A", "D", "E", "E"],
     ],
-    'ABCCED',
+    "ABCCED",
   ),
   true,
 );
 assert.strictEqual(
   exist(
     [
-      ['A', 'B', 'C', 'E'],
-      ['S', 'F', 'C', 'S'],
-      ['A', 'D', 'E', 'E'],
+      ["A", "B", "C", "E"],
+      ["S", "F", "C", "S"],
+      ["A", "D", "E", "E"],
     ],
-    'SEE',
+    "SEE",
   ),
   true,
 );
 assert.strictEqual(
   exist(
     [
-      ['A', 'B', 'C', 'E'],
-      ['S', 'F', 'C', 'S'],
-      ['A', 'D', 'E', 'E'],
+      ["A", "B", "C", "E"],
+      ["S", "F", "C", "S"],
+      ["A", "D", "E", "E"],
     ],
-    'ABCB',
+    "ABCB",
   ),
   false,
 );
-assert.strictEqual(exist([['C', 'A', 'A'], ['A', 'A', 'A'], ['B', 'C', 'D']], 'AAB'), true);
+assert.strictEqual(
+  exist(
+    [
+      ["C", "A", "A"],
+      ["A", "A", "A"],
+      ["B", "C", "D"],
+    ],
+    "AAB",
+  ),
+  true,
+);
